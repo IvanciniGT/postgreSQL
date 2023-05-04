@@ -136,7 +136,15 @@ Partición 2: Expedientes cerrados
 
 Tengo una tabla con muchos datos vivos... pero tengo muchos !
 Me puede interesar repartir esos datos en 3 tablas... sin criterio alguno... de forma aleatoria, ya que?
-- Puedo tener 3 espacios de almacenamiento diferentes para esas tablas... Trabajao sobre las 3 tablas a la vez
+- Puedo tener 3 espacios de almacenamiento diferentes para esas tablas...
+  CRITERIO 1:
+    - Datos vivos    Nvme que cuesta una pasta
+    - Datos muertos: HDD 5400
+  CRITERIO 2:
+    - Lecturas paralelas
+- Puedo tener 1 espacio de almacenamiento compartido para esas tablas...
+  CRITERIO 1: Trabajo con tablas más pequeñas: SELECT
+  CRITERIO 2: Mnto: VACUUM, ANALYZE
 - Mantenimiento: VACUUM
 
 ## OJO
