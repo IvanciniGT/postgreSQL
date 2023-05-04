@@ -2,7 +2,7 @@ DROP TABLE Personas2;
 CREATE TABLE Personas2(
     Id          SERIAL          NOT NULL,
     Nombre      VARCHAR(100)    NOT NULL,
-    Estado      SMALLINT        NOT NULL
+    Estado      SMALLINT        NOT NULL,
     PRIMARY KEY (Id, Estado)
 ) PARTITION BY LIST(Estado); --- LIST: Particionamos en función de los distintos valores que tiene el campo Estado
 
