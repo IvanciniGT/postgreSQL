@@ -63,3 +63,27 @@ INSERT INTO Personas3 (Nombre, Edad) VALUES ('Felipe', 26);
 INSERT INTO Personas3 (Nombre, Edad) VALUES ('Carmen', 52);
 INSERT INTO Personas3 (Nombre, Edad) VALUES ('Rodrigo', 70);
 INSERT INTO Personas3 (Nombre, Edad) VALUES ('Marcial', 83);
+
+
+
+-- Dame todas las personas
+select * FROM personas3;
+-- Dame todas las personas y la tabla en la que se encuentran
+select tableoid::regclass, * FROM personas3;
+-- Dame las personas en estado 2
+select * FROM Personas_jovenes;
+
+-- Dame la union de todas las tablas de pesonas
+select * FROM Personas_jovenes
+UNION ALL
+select * FROM Personas_adultas
+UNION ALL
+select * FROM Personas_ancianas;
+
+-- Vamos a ver que hace por debajo:
+EXPLAIN select * FROM personas3;
+EXPLAIN select * FROM Personas_jovenes
+UNION ALL
+select * FROM Personas_adultas
+UNION ALL
+select * FROM Personas_ancianas;
