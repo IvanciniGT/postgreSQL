@@ -1,8 +1,13 @@
 #!/bin/bash
 
-docker image pull docker.io/library/adminer:latest
+docker image pull adminer:latest
 docker container create --name adminer -p 8080:8080 adminer
 docker container start adminer
 
-sudo firewall-cmd --permanent --add-port=1234/tcp
+#docker run --name adminer -p 8080:8080 -d adminer:latest
+
+sudo firewall-cmd --permanent --add-port=8080/tcp
 sudo firewall-cmd --reload
+
+
+    
