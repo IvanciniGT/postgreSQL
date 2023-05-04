@@ -3,7 +3,6 @@ DROP TABLE Personas;
 DROP TABLE Cursos;
 
 DROP TABLE Empresas;
-DROP TABLE Letras;
 
 
 -- Cursos
@@ -105,6 +104,7 @@ INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
 INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
             VALUES ( currval('cursos_id_seq') -3, currval('personas_id_seq') -2,'03-10-2022',true);
 
+DROP TABLE Letras;
 
 CREATE TABLE LETRAS_DNI (
     RESTO SMALLINT NOT NULL PRIMARY KEY,
