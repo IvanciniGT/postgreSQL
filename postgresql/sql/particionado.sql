@@ -87,3 +87,67 @@ UNION ALL
 select * FROM Personas_adultas
 UNION ALL
 select * FROM Personas_ancianas;
+
+
+-- Creo indice solo para una particion
+CREATE INDEX nombres_personas_jovenes ON Personas_jovenes(nombre);
+
+-- Creo indice para todas las particiones
+CREATE INDEX edad_personas ON Personas3(edad);
+
+
+
+-- EJEMPLO 3
+
+DROP TABLE Personas4;
+CREATE TABLE Personas4(
+    Id          SERIAL          NOT NULL,
+    Nombre      VARCHAR(100)    NOT NULL,
+    Edad        SMALLINT        NOT NULL,
+    PRIMARY KEY (Id)
+) PARTITION BY HASH(Id); --- Genero una huella del identificador. Esa huella es numérica
+                                                                                        -- Este no se incluye
+CREATE TABLE Personas4_particion1       PARTITION OF Personas4 FOR VALUES WITH (modulus 3, remainder 0);
+CREATE TABLE Personas4_particion2       PARTITION OF Personas4 FOR VALUES WITH (modulus 3, remainder 1);
+CREATE TABLE Personas4_particion3       PARTITION OF Personas4 FOR VALUES WITH (modulus 3, remainder 2);
+
+-- Lo que consigo de esta forma es un reparto equitativo de los datos entre las tablas.
+
+INSERT INTO Personas4 (Nombre, Edad) VALUES ('Ivan', 10);
+INSERT INTO Personas4 (Nombre, Edad) VALUES ('Lucas', 18);
+INSERT INTO Personas4 (Nombre, Edad) VALUES ('Menchu', 20);
+INSERT INTO Personas4 (Nombre, Edad) VALUES ('Felipe', 26);
+INSERT INTO Personas4 (Nombre, Edad) VALUES ('Carmen', 52);
+INSERT INTO Personas4 (Nombre, Edad) VALUES ('Rodrigo', 70);
+INSERT INTO Personas4 (Nombre, Edad) VALUES ('Marcial', 83);
+
+
+
+-- Dame todas las personas
+select * FROM Personas4;
+-- Dame todas las personas y la tabla en la que se encuentran
+select tableoid::regclass, * FROM Personas4;
+-- Dame las personas en estado 2
+select * FROM Personas4_particion1;
+
+-- Dame la union de todas las tablas de pesonas
+select * FROM Personas4_particion1
+UNION ALL
+select * FROM Personas4_particion2
+UNION ALL
+select * FROM Personas4_particion3;
+
+-- Vamos a ver que hace por debajo:
+EXPLAIN select * FROM Personas4;
+EXPLAIN select * FROM Personas4_particion1
+UNION ALL
+select * FROM Personas4_particion2
+UNION ALL
+select * FROM Personas4_particion3;
+
+
+-- Creo indice solo para una particion
+CREATE INDEX nombres_Personas4_particion1 ON Personas4_particion1(nombre);
+
+-- Creo indice para todas las particiones
+CREATE INDEX edad_personas ON Personas4(edad);
