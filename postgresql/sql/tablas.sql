@@ -1,3 +1,10 @@
+DROP TABLE Inscripciones;
+DROP TABLE Personas;
+DROP TABLE Cursos;
+
+DROP TABLE Empresas;
+DROP TABLE Letras;
+
 
 -- Cursos
 CREATE TABLE Cursos (
@@ -83,10 +90,10 @@ INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
             VALUES ( currval('cursos_id_seq') -1, currval('personas_id_seq') -1,'03-08-2022',false);
 
 INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
-            VALUES ( currval('cursos_id_seq') -1, currval('personas_id_seq')-2 ,'03-20-2022',false);
+            VALUES ( currval('cursos_id_seq') -1, currval('personas_id_seq')-2 ,'20-03-2022',false);
 
 INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
-            VALUES ( currval('cursos_id_seq') -2, currval('personas_id_seq') -2,'03-22-2022',false);
+            VALUES ( currval('cursos_id_seq') -2, currval('personas_id_seq') -2,'22-03-2022',false);
 
 INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
             VALUES ( currval('cursos_id_seq') -2, currval('personas_id_seq') -3,'02-01-2022',true);
@@ -96,7 +103,7 @@ INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
 
 
 INSERT INTO INSCRIPCIONES ( CursoId, PersonaId, Fecha, Aprobado)
-            VALUES ( currval('cursos_id_seq') -3, currval('personas_id_seq') -3,'03-10-2022',true);
+            VALUES ( currval('cursos_id_seq') -3, currval('personas_id_seq') -2,'03-10-2022',true);
 
 
 CREATE TABLE LETRAS_DNI (
