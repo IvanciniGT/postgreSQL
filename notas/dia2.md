@@ -183,3 +183,23 @@ Debo dar un "criterio"(campo) de particionado... hay varios que podemos usar en 
 En ellas doy el criterio de los datos que entran en esa tabla de particionado concreta:
 Expedientes.estado = ABIERTOS
 Además, puedo definir sus propios INDICES!
+
+
+## Particionado de indices: Mismos criterios que con las tablas
+
+### Casos de uso:
+Si usamos los indices para lo que son realmente (No haciendo un FULL SCAN) 
+
+
+20.000 terminos
+
+333.000
+1.000.000 termino
+  500.000
+  250.000
+  125.000           6 comparaciones. Esto es inmediato
+   63.000
+   33.000
+   17.000 
+
+En este caso la gracia la tenemos en el mnto del indice!

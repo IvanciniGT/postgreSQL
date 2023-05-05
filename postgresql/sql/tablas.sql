@@ -39,9 +39,6 @@ CREATE TABLE Inscripciones(
     FOREIGN KEY (PersonaId) REFERENCES Personas(Id)
 );
 
--- DNI < Procedimientos almacenados, funciones
-
-
 
 INSERT INTO Cursos (Titulo, Duración, Importe) 
             VALUES ('Curso PostgreSQL', 24, 2000.0);

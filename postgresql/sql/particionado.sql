@@ -145,9 +145,3 @@ select * FROM Personas4_particion2
 UNION ALL
 select * FROM Personas4_particion3;
 
-
--- Creo indice solo para una particion
-CREATE INDEX nombres_Personas4_particion1 ON Personas4_particion1(nombre);
-
--- Creo indice para todas las particiones
-CREATE INDEX edad_personas ON Personas4(edad);
